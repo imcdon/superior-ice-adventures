@@ -1,12 +1,11 @@
 ---
 # cPanel Git Version Control deployment config.
-# Deploys to the superioriceadventures.com addon/subdomain docroot —
+# Deploys to subdomain superioriceadventures.webstarbusinessservices.com —
 # NOT the main account public_html site.
-# If your cPanel folder name differs, change DEPLOYPATH to match
-# Domains → superioriceadventures.com → Document Root.
+# Confirm Domains → Document Root matches this folder if deploy fails.
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/superioriceadventures.com/
+    - export DEPLOYPATH=$HOME/superioriceadventures.webstarbusinessservices.com/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/rsync -a --delete --exclude='.git' --exclude='.gitignore' --exclude='node_modules' --exclude='_raw' --exclude='scripts' --exclude='package.json' --exclude='package-lock.json' --exclude='includes/db.config.php' --exclude='.cpanel.yml' --exclude='.well-known' --exclude='debug-*.log' ./ $DEPLOYPATH
     - /bin/chmod 755 $DEPLOYPATH

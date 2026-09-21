@@ -26,11 +26,11 @@ if (!function_exists('url')) {
         return $base_path . '/' . $path;
     }
 
-    /** Absolute URL on the live domain (https://superioriceadventures.com/...). */
+    /** Absolute URL on the live domain (https://superioriceadventures.webstarbusinessservices.com/...). */
     function absolute_url(string $path = ''): string
     {
         global $site_url;
-        $origin = rtrim($site_url ?? 'https://superioriceadventures.com', '/');
+        $origin = rtrim($site_url ?? 'https://superioriceadventures.webstarbusinessservices.com', '/');
         $path = trim($path, '/');
         if ($path === '') {
             return $origin . '/';

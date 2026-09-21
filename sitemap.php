@@ -1,6 +1,6 @@
 <?php
 /*
- * sitemap.php - XML sitemap for https://superioriceadventures.com
+ * sitemap.php - XML sitemap for https://superioriceadventures.webstarbusinessservices.com
  */
 require __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/articles.php';

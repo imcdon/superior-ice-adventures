@@ -1,6 +1,6 @@
 # Superior Ice Adventures — Deploy & Setup
 
-Live domain: **https://superioriceadventures.com**
+Live subdomain: **https://superioriceadventures.webstarbusinessservices.com**
 
 cPanel-ready PHP site (HTML/CSS/PHP + MySQL). No Node/Composer required at runtime.
 
@@ -21,44 +21,42 @@ cPanel-ready PHP site (HTML/CSS/PHP + MySQL). No Node/Composer required at runti
    - Username: `admin`
    - Password: `admin123` (change after first login)
 
-Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and mail From always use the live domain.
+Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and mail From use the live subdomain.
 
-## Production — superioriceadventures.com
+## Production — superioriceadventures.webstarbusinessservices.com
 
 ### Git deploy (recommended)
 
 1. In cPanel → **Git Version Control**, create/clone this repo on the server.
 2. Confirm [`.cpanel.yml`](.cpanel.yml) is in the repo root (required filename with leading dot).
-3. Deploy target is **`$HOME/superioriceadventures.com/`** (addon/subdomain) — not the main `public_html` site. Change `DEPLOYPATH` in `.cpanel.yml` if Domains → Document Root shows a different folder.
+3. Deploy target is **`$HOME/superioriceadventures.webstarbusinessservices.com/`** — not the main `public_html` site. Change `DEPLOYPATH` if Domains → Document Root shows a different folder.
 4. Create `includes/db.config.php` **once** on the server (never overwrite from Git — deploy excludes it).
 5. Pull / Deploy from cPanel when you push to GitHub. Deploy syncs site files and skips `node_modules/`, `_raw/`, and local DB credentials.
 
 ### Manual / first-time checklist
 
-1. In your registrar / DNS, point the domain at your host:
-   - **A record** `@` → hosting server IP
-   - **CNAME** `www` → `superioriceadventures.com` (or same A record)
-2. In cPanel → **Domains** / **Addon Domains** / **Subdomains**:
-   - Attach `superioriceadventures.com`
-   - Set the **document root** to this project folder (site root, not a subfolder)
-3. Enable **SSL** (AutoSSL / Let’s Encrypt) for `superioriceadventures.com` and `www`
-4. Upload project files (exclude `includes/db.config.php` from your local machine; also skip `_raw/` and `node_modules/`) — or use Git deploy above
-5. In cPanel → **MySQL Databases**:
+1. In cPanel → **Domains** / **Subdomains**:
+   - Subdomain: `superioriceadventures`
+   - Domain: `webstarbusinessservices.com`
+   - Document root: `superioriceadventures.webstarbusinessservices.com` (default)
+2. Enable **SSL** (AutoSSL / Let’s Encrypt) for `superioriceadventures.webstarbusinessservices.com`
+3. Upload project files (exclude local `includes/db.config.php`; skip `_raw/` and `node_modules/`) — or use Git deploy above
+4. In cPanel → **MySQL Databases**:
    - Create a database (e.g. `yourprefix_sia`)
    - Create a user and grant **All Privileges**
-6. In phpMyAdmin:
+5. In phpMyAdmin:
    - Select that database
    - Import `database/schema-cpanel.sql`
    - Import `database/seed-cpanel.sql`
-7. On the server only, create `includes/db.config.php` from `db.config.example.php` using the **full prefixed** cPanel DB name and user
-8. Confirm `mod_rewrite` is on (usual on cPanel). `.htaccess` forces HTTPS and redirects `www` → apex
+6. On the server only, create `includes/db.config.php` from `db.config.example.php` using the **full prefixed** cPanel DB name and user
+7. Confirm `mod_rewrite` is on. `.htaccess` forces HTTPS on this subdomain
 
-After DNS + SSL propagate, the site should load at:
+After SSL propagates, the site should load at:
 
-- https://superioriceadventures.com/
-- https://superioriceadventures.com/admin/
-- https://superioriceadventures.com/sitemap.php
-- https://superioriceadventures.com/robots.txt
+- https://superioriceadventures.webstarbusinessservices.com/
+- https://superioriceadventures.webstarbusinessservices.com/admin/
+- https://superioriceadventures.webstarbusinessservices.com/sitemap.php
+- https://superioriceadventures.webstarbusinessservices.com/robots.txt
 
 ## Content
 
@@ -66,9 +64,9 @@ All marketing copy lives in `includes/config.php`. Identity, services, About, FA
 
 Site URL settings:
 
-- `$site_domain` = `superioriceadventures.com`
-- `$site_url` = `https://superioriceadventures.com`
-- `$mail_from` = `noreply@superioriceadventures.com`
+- `$site_domain` = `superioriceadventures.webstarbusinessservices.com`
+- `$site_url` = `https://superioriceadventures.webstarbusinessservices.com`
+- `$mail_from` = `noreply@webstarbusinessservices.com`
 
 ### Image pipeline (Soldotna-style)
 
@@ -84,7 +82,7 @@ Do not upload `_raw/` or `node_modules/` to cPanel — only the processed `asset
 
 ## Contact form
 
-Set `$contact_form_to` (and `$email`) in `includes/config.php`. Submissions use PHP `mail()` from `noreply@superioriceadventures.com`. On shared hosting, confirm the host allows outbound mail; create that mailbox or an alias in cPanel if the host requires it. Some hosts require SMTP — switch later if needed.
+Set `$contact_form_to` (and `$email`) in `includes/config.php`. Submissions use PHP `mail()` from `noreply@webstarbusinessservices.com`. On shared hosting, confirm the host allows outbound mail; create that mailbox or an alias in cPanel if the host requires it. Some hosts require SMTP — switch later if needed.
 
 ## Admin blog
 
