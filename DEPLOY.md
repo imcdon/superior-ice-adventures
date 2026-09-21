@@ -25,6 +25,16 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
 
 ## Production — superioriceadventures.com
 
+### Git deploy (recommended)
+
+1. In cPanel → **Git Version Control**, create/clone this repo on the server.
+2. Confirm [`.cpanel.yml`](.cpanel.yml) is in the repo root (required filename with leading dot).
+3. Set `DEPLOYPATH` in `.cpanel.yml` if the docroot is not `$HOME/public_html/` (e.g. an addon domain folder).
+4. Create `includes/db.config.php` **once** on the server (never overwrite from Git — deploy excludes it).
+5. Pull / Deploy from cPanel when you push to GitHub. Deploy syncs site files and skips `node_modules/`, `_raw/`, and local DB credentials.
+
+### Manual / first-time checklist
+
 1. In your registrar / DNS, point the domain at your host:
    - **A record** `@` → hosting server IP
    - **CNAME** `www` → `superioriceadventures.com` (or same A record)
@@ -32,7 +42,7 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
    - Attach `superioriceadventures.com`
    - Set the **document root** to this project folder (site root, not a subfolder)
 3. Enable **SSL** (AutoSSL / Let’s Encrypt) for `superioriceadventures.com` and `www`
-4. Upload project files (exclude `includes/db.config.php` from your local machine; also skip `_raw/` and `node_modules/`)
+4. Upload project files (exclude `includes/db.config.php` from your local machine; also skip `_raw/` and `node_modules/`) — or use Git deploy above
 5. In cPanel → **MySQL Databases**:
    - Create a database (e.g. `yourprefix_sia`)
    - Create a user and grant **All Privileges**
