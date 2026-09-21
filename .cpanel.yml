@@ -1,11 +1,13 @@
 ---
 # cPanel Git Version Control deployment config.
-# Filename must be .cpanel.yml (leading dot) for cPanel Git deploy.
-# Edit DEPLOYPATH if the site document root is not public_html
-# (e.g. /home/USERNAME/superioriceadventures.com/).
+# Deploys to the superioriceadventures.com addon/subdomain docroot —
+# NOT the main account public_html site.
+# If your cPanel folder name differs, change DEPLOYPATH to match
+# Domains → superioriceadventures.com → Document Root.
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
+    - export DEPLOYPATH=$HOME/superioriceadventures.com/
+    - /bin/mkdir -p $DEPLOYPATH
     - /bin/rsync -a --delete --exclude='.git' --exclude='.gitignore' --exclude='node_modules' --exclude='_raw' --exclude='scripts' --exclude='package.json' --exclude='package-lock.json' --exclude='includes/db.config.php' --exclude='.cpanel.yml' --exclude='.well-known' --exclude='debug-*.log' ./ $DEPLOYPATH
     - /bin/chmod 755 $DEPLOYPATH
     - /bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} \;

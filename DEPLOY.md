@@ -29,7 +29,7 @@ Local URLs stay under `/superior-ice-adventures/`. Canonical tags, sitemap, and 
 
 1. In cPanel → **Git Version Control**, create/clone this repo on the server.
 2. Confirm [`.cpanel.yml`](.cpanel.yml) is in the repo root (required filename with leading dot).
-3. Set `DEPLOYPATH` in `.cpanel.yml` if the docroot is not `$HOME/public_html/` (e.g. an addon domain folder).
+3. Deploy target is **`$HOME/superioriceadventures.com/`** (addon/subdomain) — not the main `public_html` site. Change `DEPLOYPATH` in `.cpanel.yml` if Domains → Document Root shows a different folder.
 4. Create `includes/db.config.php` **once** on the server (never overwrite from Git — deploy excludes it).
 5. Pull / Deploy from cPanel when you push to GitHub. Deploy syncs site files and skips `node_modules/`, `_raw/`, and local DB credentials.
 
