@@ -1,13 +1,14 @@
 ---
 # cPanel Git Version Control deployment config.
-# Deploys to subdomain superioriceadventures.webstarbusinessservices.com —
+# Staging: superior-ice-adventures.webstarbusinessservices.com
 # NOT the main account public_html site.
 # Confirm Domains → Document Root matches this folder if deploy fails.
+# No --delete: preserves server-only files (db.config.php, uploads).
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/superioriceadventures.webstarbusinessservices.com/
+    - export DEPLOYPATH=$HOME/superior-ice-adventures.webstarbusinessservices.com/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/rsync -a --delete --exclude='.git' --exclude='.gitignore' --exclude='node_modules' --exclude='_raw' --exclude='scripts' --exclude='package.json' --exclude='package-lock.json' --exclude='includes/db.config.php' --exclude='.cpanel.yml' --exclude='.well-known' --exclude='debug-*.log' ./ $DEPLOYPATH
+    - /usr/bin/rsync -a --exclude='.git' --exclude='.gitignore' --exclude='node_modules' --exclude='_raw' --exclude='scripts' --exclude='package.json' --exclude='package-lock.json' --exclude='includes/db.config.php' --exclude='.cpanel.yml' --exclude='.well-known' --exclude='debug-*.log' ./ $DEPLOYPATH
     - /bin/chmod 755 $DEPLOYPATH
     - /bin/find $DEPLOYPATH -type d -exec /bin/chmod 755 {} \;
     - /bin/chmod 644 $DEPLOYPATH/.htaccess 2>/dev/null || true

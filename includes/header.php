@@ -33,6 +33,7 @@ $og_image = $og_image ?? absolute_url('assets/img/hero/inland-splake-fishing.web
     <link rel="stylesheet" href="<?= htmlspecialchars(url('assets/css/main.css')) ?>">
 </head>
 <body<?= $body_class !== '' ? ' class="' . htmlspecialchars($body_class) . '"' : '' ?>>
+    <?php require __DIR__ . '/partials/webstar-staging-banner.php'; ?>
     <header class="site-header" id="site-header">
         <div class="header-inner container-wide">
             <a class="logo" href="<?= htmlspecialchars(url()) ?>">

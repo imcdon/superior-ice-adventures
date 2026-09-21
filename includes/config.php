@@ -3,10 +3,11 @@
  * config.php - Site-wide settings used across every page.
  */
 require_once __DIR__ . '/paths.php';
+require_once __DIR__ . '/staging-gate.php';
 
 $site_name = 'Superior Ice Adventures';
-$site_domain = 'superioriceadventures.webstarbusinessservices.com';
-$site_url = 'https://superioriceadventures.webstarbusinessservices.com';
+$site_domain = 'superioriceadventures.com';
+$site_url = 'https://superioriceadventures.com';
 $site_tagline = 'Upper Peninsula and Lake Superior Guided Fishing and Ice Shanty Rentals in Michigan.';
 $site_description = 'Upper Peninsula and Lake Superior guided fishing trips for Splake, Brook Trout, Burbot, Lake Trout, and Steelhead. Ice Shanty Rentals available with gear and fishing location.';
 $company_name = 'Superior Ice Adventures';
@@ -17,7 +18,7 @@ $phone_href = 'tel:+12483427414';
 $email = 'derekwilder14@gmail.com';
 $email_href = 'mailto:derekwilder14@gmail.com';
 $contact_form_to = 'derekwilder14@gmail.com';
-$mail_from = 'noreply@webstarbusinessservices.com';
+$mail_from = 'noreply@superioriceadventures.com';
 
 $address = [
     'line1'      => '',

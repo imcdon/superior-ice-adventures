@@ -71,7 +71,7 @@ $body = "Name: {$name}\n"
 
 $fromAddr = !empty($mail_from)
     ? $mail_from
-    : ('noreply@' . ($site_domain ?? 'webstarbusinessservices.com'));
+    : ('noreply@' . ($site_domain ?? 'superioriceadventures.com'));
 $headers = [
     'From: ' . $site_name . ' <' . $fromAddr . '>',
     'Reply-To: ' . $emailAddr,

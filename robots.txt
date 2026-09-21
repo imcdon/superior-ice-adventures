@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://superioriceadventures.webstarbusinessservices.com/sitemap.php
+Sitemap: https://superioriceadventures.com/sitemap.php
